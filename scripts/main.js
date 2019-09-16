@@ -3,26 +3,22 @@ myHeading.textContent = 'Hello world!';
 
 let myImage = document.querySelector('img');
 
+let toggle = true;
 myImage.onclick = function () {
-    let mySrc = myImage.getAttribute('src');
-    if (mySrc === 'images/firefox-icon.png') {
+    if (toggle) {
         myImage.setAttribute('src', 'images/firefox2.png');
     } else {
         myImage.setAttribute('src', 'images/firefox-icon.png');
     }
+    toggle = !toggle
 }
 
 let myButton = document.querySelector('button');
-let myHeading = document.querySelector('h1');
 
 function setUserName() {
-    let myName = prompt('Please enter your name.');
-    if (!myName || myName === null) {
-        setUserName();
-    } else {
-        sessionStorage.setItem('name', myName);
-        myHeading.innerHTML = 'Mozilla is cool, ' + myName;
-    }
+    let myName = prompt('Please enter your name')
+    sessionStorage.setItem('name',myName)
+    myHeading.textContent = 'Mozilla is cool, ' + myName;
 }
 
 if (!sessionStorage.getItem('name')) {
